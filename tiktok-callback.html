@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TikTok bağlantısı - Hayretbaz Yükleyici</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.6;color:#222}
+code{display:block;word-break:break-all;background:#f3f3f3;border:1px solid #ddd;border-radius:6px;padding:12px;margin:12px 0;font-size:14px}
+.err{color:#b00020}
+</style>
+</head>
+<body>
+<h1>Hayretbaz Yükleyici – TikTok</h1>
+<div id="out">Yükleniyor…</div>
+<script>
+(function(){
+  var p = new URLSearchParams(location.search), o = document.getElementById('out');
+  if (p.get('code')) {
+    o.innerHTML = '<p>Bağlantı izni alındı. Bu adresi kopyalayıp Hayretbaz Yükleyici\'ye yapıştırın:</p><code></code>' +
+      '<p>Authorization received. Copy this address back into Hayretbaz Yükleyici.</p>';
+    o.querySelector('code').textContent = location.href;
+  } else if (p.get('error')) {
+    o.innerHTML = '<p class="err"></p>';
+    o.querySelector('p').textContent = 'TikTok hatası / error: ' + p.get('error') + ' ' + (p.get('error_description') || '');
+  } else {
+    o.textContent = 'Bu sayfa yalnızca TikTok giriş dönüşü içindir. / This page is only the TikTok login redirect.';
+  }
+})();
+</script>
+<p><a href="tiktok-privacy.html">Privacy Policy (TikTok)</a> · <a href="tiktok-terms.html">Terms of Service (TikTok)</a></p>
+</body>
+</html>
