@@ -17,6 +17,11 @@ code{display:block;word-break:break-all;background:#f3f3f3;border:1px solid #ddd
 <script>
 (function(){
   var p = new URLSearchParams(location.search), o = document.getElementById('out');
+  if (p.get('code') && /^local-/.test(p.get('state') || '')) {
+    o.textContent = 'Hayretbaz Yükleyici paneline dönülüyor… / Returning to the Hayretbaz Yükleyici panel…';
+    location.replace('http://127.0.0.1:8765/callback' + location.search);
+    return;
+  }
   if (p.get('code')) {
     o.innerHTML = '<p>Bağlantı izni alındı. Bu adresi kopyalayıp Hayretbaz Yükleyici\'ye yapıştırın:</p><code></code>' +
       '<p>Authorization received. Copy this address back into Hayretbaz Yükleyici.</p>';
